@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flashlight Link</title>
+</head>
+<body>
+    <h1>Flashlight Link</h1>
+    <p>Click the button below to turn on the flashlight:</p>
+    <button onclick="turnOnFlashlight()">Turn On Flashlight</button>
+
+    <script>
+        function turnOnFlashlight() {
+            if ('torch' in navigator) {
+                navigator.torch.request().then(function() {
+                    console.log('Flashlight is on.');
+                }).catch(function(err) {
+                    console.error('Error turning on flashlight:', err);
+                });
+            } else {
+                console.error('Flashlight not supported on this device.');
+            }
+        }
+    </script>
+</body>
+</html>
